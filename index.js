@@ -59,6 +59,10 @@ client.on("message", function(message) {
 		  message.channel.sendMessage("***-Only shooting stars break the mold***")
 		break;
 
+		case "шрек3":
+		  message.channel.sendMessage("***-Fuck U***")
+		break;
+
 		case "гарри":
 		  message.channel.sendMessage("***-БЛЯДЬ, ОН ЁБЕНЫЙ ВОЛШЕБНИК!***")
 		  message.channel.sendMessage("***-Стой.***")
