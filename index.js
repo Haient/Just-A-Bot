@@ -23,7 +23,7 @@ function play(connection, message) {
 
 client.on("ready", function() {
 	console.log("Ready");
-	client.user.setGame('-help for info');
+	client.user.setGame('-help для информации');
 });
 
 var servers = {};
