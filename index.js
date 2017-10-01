@@ -176,6 +176,6 @@ function playMusic(id, message){
 		} else if (msg.content.startsWitch(`${PREFIX}stop`)) {
 			if (!msg.member.voiceChannel) return msg.channel.send("Вы не в голосовом канале!");
 			msg.member.voiceChannel.leave();
-	
+		}
 	
 client.login(process.env.BOT_TOKEN);
