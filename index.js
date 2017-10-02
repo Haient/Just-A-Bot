@@ -94,11 +94,58 @@ client.on("message", function(message) {
 		  .addField("-stop", "Остановка трека.")
 		  message.channel.sendEmbed(embed);
 		break;
+
+    // Проигрыватель видео/музыки
+		case "play":
+		  if (!args[1]) {
+		  	message.channel.sendMessage("**Пожалуйста, учажите ссылку на ролик YouTube.**");
+		  	return;
+		  }
+
+		  if (!message.member.voiceChannel) {
+		  	message.channel.sendMessage("**Вы должны находиться в голосовом канале.**");
+		  	return;
+		  }
+
+		  if (!servers[message.guild.id]) servers[message.guild.id] = {
+		  	queue: []
+		  }
+
+		  var server = servers[message.guild.id];
+          
+          server.queue.push(args[1]);
+
+          if (!message.guild.voiceConnection) message.member.voiceChannel.join().then(function(connection) {
+          	play(connection, message);
+          	});
+	    break;
+
+		case "skip":
+		  var server = servers[message.guild.id];
+
+		  if (server.dispatcher) server.dispatcher.end();
+        break;
+
+        case "pause":
+		  var server = servers[message.guild.id];
+
+		  if (server.dispatcher) server.dispatcher.pause();
+        break;
+
+        case "unpause":
+		  var server = servers[message.guild.id];
+
+		  if (server.dispatcher) server.dispatcher.play();
+        break;
+
+        case "stop":
+          var server = server[message.guild.id];
+
+          if (message.guild.voiceConnection) message.guild.voiceConnection.disconnect();
+        break;
+	}
 });
 
-	
-	
-	
 function playMusic(id, message){
     voiceChannel = message.member.voiceChannel;    
     voiceChannel.join().then(function (connection){
@@ -121,61 +168,4 @@ function playMusic(id, message){
     });
 }
 
-	client.on('messege', async msg => {
-		if (msg.author.bot) return undefined;
-		if (!msg.content.startsWitch(PREFIX)) return undefined;
-		const args = msg.content.split(' ');
-		const serverQueue = queue.get(msg.guild.id);
-		
-		if (msg.content.startsWitch(`${PREFIX}play`)) {
-			const voiceChannel = msg.member.voiceChannel;
-			if (!voiceChannel) return msg.channel.send("Вам нужно находиться в голосовом канале!");
-			const permissions = voiceChannel.permissionsFor(msg.client.user);
-			if (!permissions.has('CONNECT')) {
-				return msg.channel.send("Я не могу подключиться к этому каналу!");
-			}
-			if (!permissions.has('SPEAK')) {
-				return msg.channel.send("Я не могу говорить в этом канале!");
-			}
-			
-			const songInfo = await ytdl.getInfo(args[1]);
-			const song = {
-				title: songInfo.title,
-				url: songInfo.video_url
-			};
-			if (!serverQueue) {
-				const queueConstruct = {
-					textChannel: msg.channel,
-					voiceChannel: voiceChannel,
-					connection: null,
-					songs: [],
-					volume: 5,
-					playing: true
-				};
-				queue.set(msg.guild.id, queueConstruct);
-				
-				try {
-				var connection = await voiceChannel.join();
-			      } catch (error) {
-				console.error(`Я не могу подключиться к голосовому каналу: ${error}`);
-				return msg.channel.send(`Я не могу подключиться к голосовому каналу: ${error}`);
-			      }
-	         	} else {
-				
-			}
-			
-			const dispatcher = connection.playStream(ytdl(args[1]))
-			.on('end', () => {
-				console.log('музыка закончилась:');
-				voiceChannel.leave();
-			})
-			.on('error', error => {
-				console.error(error);
-			});
-		       dispatcher.setVolumeLogaritmic(5 / 5);
-		} else if (msg.content.startsWitch(`${PREFIX}stop`)) {
-			if (!msg.member.voiceChannel) return msg.channel.send("Вы не в голосовом канале!");
-			msg.member.voiceChannel.leave();
-		}
-	
 client.login(process.env.BOT_TOKEN);
