@@ -65,6 +65,21 @@ client.on("message", function(message) {
 		  message.channel.sendMessage("***-МЫ НА ВОШЛЕБНИКА БЛЯТЬ НАПАЛИ!***")
 		  message.channel.sendMessage("***ОН... ПОСМОТРИ БЛЯЯЯТЬ!***")
 		break;
+			
+		case "polish":
+		  message.channel.sendMessege("```
+Prosze - Пожалуйста
+Dziekuje - Спасибо
+Nie - Нет
+Tak - Да
+Czesc - Привет/Пока
+Przepraszam - Прошу прощения
+Dzień dobry - Добрый день
+Dobranoc - Спокойной ночи
+Dobrze - Хорошо
+Pewnie - Конечно
+```")
+break;
      
     // Текст который появляеться при неправельном наборе команд
 		default:
@@ -73,10 +88,6 @@ client.on("message", function(message) {
 		  .setTitle("***ТАКОЙ КОМАНДЫ НЕ СУЩЕСТВУЕТ***")
 		  .setFooter("Данный бот находиться в стадии глубокой разработки")
 		  .addField("*-help*", "Информация о командах.")
-		  .addField("*-димон*", "Добавляет **ДИМОООН**, в Ваше сообщение.")
-		  .addField("-шрек(1-2)", "Добавляет **Куплет из песни**, в Ваше сообщение.")
-		  .addField("-play (url)", "Проигрывание музыки по ссылке (YouTube).")
-		  .addField("-stop", "Остановка музыки.")
 		  message.channel.sendEmbed(embed);
         break;
 
