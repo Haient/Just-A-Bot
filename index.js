@@ -68,17 +68,18 @@ client.on("message", function(message) {
 			
 		case "polish":
 	  var embed = new Discord.RichEmbed()
-		  .setColor("#7289DA")
-		  .setTitle("**ПОЛЬСКИЕ БУКВОСОЧИТАНИЯ**")
+	    .setAuthor("Polish", "https://i.imgur.com/xlGU7St.png")
+		  .setColor("#ffffff")
+		  .setTitle("**ПОЛЬСКИЕ БУКВОСОЧЕТАНИЯ**")
 		  .setFooter("Будет дополняться")
-		  .addField("*Ch* - Х")
-		  .addField("*Rz* - Ж")
-	          .addField("*Dz* - Дз")
-		  .addField("*Dz* - Джь")
-		  .addField("*Dz* - Дж")
-		  .addField("*Sz* - Ш")
-		  .addField("*Cz* - Ч")
-	          .addField("*SzCz* - Щ")
+		  .addField("Буквосочетания: *Ch*", "Транскрипция: **Х**")
+		  .addField("Буквосочетания: *Rz*", "Транскрипция: **Ж**")
+	          .addField("Буквосочетания: *Dz*", "Транскрипция: **Дз**")
+		  .addField("Буквосочетания: *Dź*", "Транскрипция: **Джь**")
+		  .addField("Буквосочетания: *Dż*", "Транскрипция: **Дж**")
+		  .addField("Буквосочетания: *Sz*", "Транскрипция: **Ш**")
+		  .addField("Буквосочетания: *Cz*", "Транскрипция: **Ч**")
+	          .addField("Буквосочетания: *SzCz*", "Транскрипция: **Щ**")
 		  message.channel.sendEmbed(embed);	
                 break;
      
@@ -99,6 +100,7 @@ client.on("message", function(message) {
 		  .setTitle("**ОСНОВНЫЕ КОМАНДЫ**")
 		  .setFooter("Данный бот находиться в стадии глубокой разработки")
 		  .addField("*-help*", "Информация о командах.")
+		  .addField("*-polish*", "Сноска польского языка")
 		  .addField("*-димон*", "Добавляет **ДИМОООН**, в Ваше сообщение.")
 		  .addField("-шрек(1-2)", "Добавляет **Куплет из песни**, в Ваше сообщение.")
 		  .addField("-play (url)", "Проигрывание музыки по ссылке (YouTube).")
