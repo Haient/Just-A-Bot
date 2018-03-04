@@ -67,19 +67,20 @@ client.on("message", function(message) {
 		break;
 			
 		case "polish":
-		  message.channel.sendMessege("```
-Prosze - Пожалуйста
-Dziekuje - Спасибо
-Nie - Нет
-Tak - Да
-Czesc - Привет/Пока
-Przepraszam - Прошу прощения
-Dzień dobry - Добрый день
-Dobranoc - Спокойной ночи
-Dobrze - Хорошо
-Pewnie - Конечно
-```")
-break;
+	  var embed = new Discord.RichEmbed()
+		  .setColor("#7289DA")
+		  .setTitle("**ПОЛЬСКИЕ БУКВОСОЧИТАНИЯ**")
+		  .setFooter("Будет дополняться")
+		  .addField("*Ch* - Х")
+		  .addField("*Rz* - Ж")
+	          .addField("*Dz* - Дз")
+		  .addField("*Dz* - Джь")
+		  .addField("*Dz* - Дж")
+		  .addField("*Sz* - Ш")
+		  .addField("*Cz* - Ч")
+	          .addField("*SzCz* - Щ")
+		  message.channel.sendEmbed(embed);	
+                break;
      
     // Текст который появляеться при неправельном наборе команд
 		default:
