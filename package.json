@@ -1,7 +1,7 @@
 {
-  "name": "discord_bot",
+  "name": "justabot",
   "version": "1.0.0",
-  "description": "Best Bot in the Year",
+  "description": "Best bot in the world nigga bitchessss",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,13 +9,13 @@
   "author": "Haient",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.3.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "fs": "0.0.1-security",
     "get-youtube-id": "^1.0.0",
-    "opusscript": "0.0.3",
+    "opusscript": "0.0.6",
     "request": "^2.83.0",
-    "youtube-info": "^1.1.2",
-    "ytdl-core": "^0.17.1"
+    "youtube-info": "^1.1.3",
+    "ytdl-core": "^0.20.2"
   }
 }
